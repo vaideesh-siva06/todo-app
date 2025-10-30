@@ -3,6 +3,7 @@
 import Image from "next/image";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FaTrash } from "react-icons/fa";
 
 interface Todo {
   _id: string,
@@ -33,6 +34,7 @@ export default function Home() {
       task: todoInput
     }).then((res) => {
       const newItem = res.data;
+      setTodoInput('');
       setTodoItems((prev) => [newItem, ...prev]);
     }).catch(err => {
       console.log(err);
@@ -73,9 +75,9 @@ export default function Home() {
                   <span className="text-gray-800 break-words">{todoItem.task}</span>
                   <button
                     onClick={() => deleteItem(todoItem._id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition"
+                    className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600 transition"
                   >
-                    Delete
+                    <FaTrash />
                   </button>
                 </li>
               ))}
