@@ -4,9 +4,14 @@ import Image from "next/image";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+interface Todo {
+  _id: string,
+  task: string
+}
+
 export default function Home() {
 
-  const [todoItems, setTodoItems] = useState<string[]>([]);
+  const [todoItems, setTodoItems] = useState<Todo[]>([]);
   const [todoInput, setTodoInput] = useState('');
 
   useEffect(() => {
